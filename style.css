@@ -2,6 +2,7 @@ body{
 background-color: rgb(255, 217, 0);
 font-family: 'League Gothic', sans-serif;
 text-align: center;
+word-wrap: break-word;
 }
 #blackhole{
 border-radius: 50%;
