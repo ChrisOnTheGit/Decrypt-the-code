@@ -3,17 +3,30 @@
 // }, 3000);
 const countMe = () => {
 	let count = 0;
+	let r = 0;
+	let g = 0;
+	let b = 0;
+
 	setInterval(() => {
-		let counter = document.getElementById("theCounter");
-		let doubleCount = count*2
-		document.body.style.backgroundColor = `rgb(${doubleCount / 10},${
-			doubleCount / 40
-		},${count / 10})`;
-		counter.innerHTML = `Count: ${count} <br>Double: ${doubleCount}`;
+		// counter.innerHTML = `Count: ${count} <br>Double: ${doubleCount}`;
 		console.log(count);
 		count++;
+		if (count < 255) {
+			r += 1;
+		} else if (count > 255 && count < 510) {
+			r=0
+			g += 1;
+		} else {
+			b += 1;
+		}
+		if (b > 255) {
+			(count = 0), (r = 0), (g = 0), (b = 0);
+		}
+		document.getElementById(
+			"blackhole"
+		).style.border = `rgb(${b},${r}, ${g}) solid 3px`;
+		document.body.style.backgroundColor = `rgb(${r},${g}, ${b})`;
 	}, 1);
-
 };
 
 const decrypt = () => {
@@ -40,3 +53,12 @@ const encrypt = () => {
 	decrypt(password, ciphertext); //test decrypt out
 	return ciphertext;
 };
+// document.body.addEventListener("mousemove", function (e) {
+// 	let div = document.body;
+// 	x = e.offsetX;
+// 	y = e.offsetY;
+// 	div.style.backgroundColor = `rgb(${x}, ${y}, ${x - y})`;
+// 	let header = document.getElementById("header");
+// header.style.color = `rgb(${y}, ${x}, ${y - x})`;
+// });
+
